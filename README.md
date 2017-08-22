@@ -148,7 +148,20 @@ finally close the litifer instance :
 litifer.close();
 ```
 
-Add [LitiferService.java](https://github.com/kishlayk/LitiferAndroidSdk/blob/master/LocationService.java) and [GeofenceTransitionService.java](https://github.com/kishlayk/LitiferAndroidSdk/blob/master/GeofenceTransitionsIntentService.java) file in your project to enable Geofence pings: 
+Add [LitiferService.java](https://github.com/kishlayk/LitiferAndroidSdk/blob/master/LocationService.java) and [GeofenceTransitionService.java](https://github.com/kishlayk/LitiferAndroidSdk/blob/master/GeofenceTransitionsIntentService.java) file in your project to enable Geofence pings.
+
+Register these services in `AndroidManifest.xml`.
+
+```
+        <service
+            android:name=".GeofenceTransitionsIntentService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".LocationService"
+            android:enabled="true"
+            android:exported="true" />
+```
 
 
 
