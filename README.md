@@ -45,10 +45,7 @@ new Thread(){
 
                     litifer.addCustomer()
                             .setAge(23)
-                            .setName("dipu")
-                            .setEmail("rit2012015dipu@gmail.com")
-                            .setGender("male")
-                            .setPhone_no("9818252130");
+                            .setGender("male");
 
                     litifer.config()
                             .setApplicationID("592ff8126acd4a048a5deaa4")
