@@ -4,7 +4,7 @@
 
 * Min Android SDK 14
 
-### Installing the Library
+1. ### Installing the Library
 
 #### JCenter
 
@@ -14,7 +14,17 @@ The easiest way to get Litifer into your Android project is to use the JCenter M
 compile 'litifer.com.sdk:1.2'
 ```
 
-### Intializing the SDK
+2. #### Add `uses-feature` tag to app manifest:
+
+```
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH"  android:required="false"/>
+```
+
+3. ### Intializing the SDK
 The Litifer SDK MUST be initialized inside the Application base class `onCreate` method or Main Activity `onCreate` method. If your Android application doesn't already have an Application base class, follow these instructions to create one.
 If your Android application doesn't already have an Application base class and want to create one, follow [these](https://developer.android.com/reference/android/app/Application.html) instructions to create one.
 
