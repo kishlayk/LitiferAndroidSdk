@@ -19,9 +19,6 @@ compile 'litifer.com.sdk:1.2'
 ```
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.BLUETOOTH"  android:required="false"/>
 ```
 
 3. ### Intializing the SDK
@@ -151,7 +148,7 @@ finally close the litifer instance :
 litifer.close();
 ```
 
-Add [this]() Location Services file in your project to enable Geofence pings: 
+Add [LitiferService.java](https://github.com/kishlayk/LitiferAndroidSdk/blob/master/LocationService.java) and [GeofenceTransitionService.java](https://github.com/kishlayk/LitiferAndroidSdk/blob/master/GeofenceTransitionsIntentService.java) file in your project to enable Geofence pings: 
 
 
 
