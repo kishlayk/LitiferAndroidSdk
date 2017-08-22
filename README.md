@@ -163,7 +163,7 @@ Register these services in `AndroidManifest.xml`.
             android:exported="true" />
 ```
 
-Register `LocationReceiver` in `AndroidManifest.xml`
+Register [LocationReceiver](https://github.com/kishlayk/LitiferAndroidSdk/blob/master/LocationServiceReceiver.java) in `AndroidManifest.xml`
 
 ```
         <receiver
