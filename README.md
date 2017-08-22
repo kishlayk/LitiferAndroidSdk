@@ -163,6 +163,23 @@ Register these services in `AndroidManifest.xml`.
             android:exported="true" />
 ```
 
+Register `LocationReceiver` in `AndroidManifest.xml`
+
+```
+        <receiver
+            android:name=".LocationServiceReciever">
+
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.intent.action.REBOOT" />
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.location.PROVIDERS_CHANGED" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+            </intent-filter>
+        </receiver>
+```
+
 
 
 
