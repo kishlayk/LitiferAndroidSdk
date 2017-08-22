@@ -11,7 +11,7 @@
 The easiest way to get Litifer into your Android project is to use the JCenter Maven repository. Just add the following line to the `dependencies` section of your module's `build.gradle` file:
 
 ```
-compile 'io.rover.library:rover:1.15.4'
+compile 'litifer.com.sdk:1.2'
 ```
 
 ### Intializing the SDK
