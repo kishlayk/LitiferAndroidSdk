@@ -9,7 +9,6 @@ import android.util.Log;
 
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingEvent;
-import com.google.firebase.iid.FirebaseInstanceId;
 //import com.litifer.sdk.notifications.Notify;
 
 import java.util.ArrayList;
