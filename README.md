@@ -55,9 +55,6 @@ new Thread(){
                             .setmAdTrackEnabled(info.isLimitAdTrackingEnabled());
 
 
-                    litifer.addDevice()
-                            .setFCMToken(FirebaseInstanceId.getInstance().getToken());
-
                     litifer.addCustomer()
                             .setAge(23)
                             .setGender("male");
@@ -87,8 +84,6 @@ new Thread(){
                         @Override
                         public void onSuccess(String message) {
 
-                            stringOfWifiDetails+=" "+message+"\n";
-                            loadtext();
                         }
 
                         @Override
