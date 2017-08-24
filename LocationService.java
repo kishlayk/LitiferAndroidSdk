@@ -8,23 +8,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.SystemClock;
-import android.support.annotation.IntDef;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
-import android.webkit.GeolocationPermissions;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingRequest;
 import com.google.android.gms.location.LocationListener;
@@ -38,8 +33,9 @@ import litifer.com.sdk.data.model.GeofenceEntity;
 import litifer.com.sdk.presentation.Litifer;
 
 /**
- * Created by dipu on 7/4/17.
+ * Created by kishlaykishore on 24/08/17.
  */
+
 
 public class LocationService extends Service implements ResultCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private GoogleApiClient mgoogleApiClient = null;
@@ -115,14 +111,14 @@ public class LocationService extends Service implements ResultCallback, GoogleAp
                     @Override
                     public void onLocationChanged(Location location) {
                         currentLocation = location;
-                        addGeofence(location);
+                        addNewGeofences(location);
 
                         System.out.println("Location is :" + location);
                     }
                 });
             }
             else {
-            addGeofence(currentLocation);
+                addNewGeofences(currentLocation);
             }
         }
     }
@@ -186,13 +182,10 @@ public class LocationService extends Service implements ResultCallback, GoogleAp
      */
 
 
-    private GeofencingRequest getGeofencingRequest(double latitude, double longitude) {
-        mgeofenceList = getGeofenceConvList(latitude, longitude);
+    private GeofencingRequest getGeofencingRequest(List<Geofence> geofences) {
         GeofencingRequest.Builder builder = new GeofencingRequest.Builder();
-
         builder.setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER);
-
-        builder.addGeofences(mgeofenceList);
+        builder.addGeofences(geofences);
         return builder.build();
     }
 
@@ -205,11 +198,11 @@ public class LocationService extends Service implements ResultCallback, GoogleAp
         return pendingIntent;
     }
 
-    private void addGeofence(Location location) {
+    private void addGeofence(List<Geofence> geofences) {
         try {
             // if (manager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             LocationServices.GeofencingApi.addGeofences(mgoogleApiClient,
-                    getGeofencingRequest(location.getLatitude(), location.getLongitude()), getPendingIntent()).setResultCallback(this);
+                    getGeofencingRequest(geofences), getPendingIntent()).setResultCallback(this);
             //}else{
             //Log.i("Gps", "Gps Service not working so GeoTransitionIntentService not launched");
             //this.stopService(new Intent(this, LocationService.class));
@@ -224,11 +217,11 @@ public class LocationService extends Service implements ResultCallback, GoogleAp
         }
     }
 
-    private List<Geofence> getGeofenceConvList(double latitude, double longitude) {
+    private void addNewGeofences(Location location) {
 
-        List<double[]> listRecievedFromServer = Litifer.init(this).getGeofenceList(currentLocation.getLatitude(), currentLocation.getLongitude(), new Litifer.GeofenceListener() {
+        Litifer.init(this).getGeofenceList(currentLocation.getLatitude(), currentLocation.getLongitude(), new Litifer.GeofenceListener() {
             @Override
-            public List<Geofence> onSuccess(List<GeofenceEntity> geofenceEntities) {
+            public void onSuccess(List<GeofenceEntity> geofenceEntities) {
                 List<Geofence> m1geofencelist = new ArrayList<>();
                 for (GeofenceEntity geofence : geofenceEntities){
 
@@ -242,7 +235,9 @@ public class LocationService extends Service implements ResultCallback, GoogleAp
 
                 }
 
-                }
+                addGeofence(m1geofencelist);
+
+            }
 
 
             @Override
@@ -250,18 +245,6 @@ public class LocationService extends Service implements ResultCallback, GoogleAp
 
             }
         });
-        List<Geofence> m1geofencelist = new ArrayList<>();
-        for (double[] i : listRecievedFromServer) {
-            m1geofencelist.add(new Geofence.Builder()
-                    .setRequestId("s1") // Geofence ID
-                    .setCircularRegion(i[0], i[1], (float) i[2]) // defining fence region
-                    .setExpirationDuration(100000) // expiring date
-                    // Transition types that it should look for
-                    .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER | Geofence.GEOFENCE_TRANSITION_EXIT)
-                    .build());
-
-        }
-        return m1geofencelist;
     }
 
     @Override
