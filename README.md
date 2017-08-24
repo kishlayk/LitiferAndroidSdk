@@ -8,10 +8,19 @@
 
 #### JCenter
 
-The easiest way to get Litifer into your Android project is to use the JCenter Maven repository. Just add the following line to the `dependencies` section of your module's `build.gradle` file:
+The easiest way to get Litifer into your Android project is to use the JCenter Maven repository.
+
+Add the following line to the `dependencies` section of your project's `build.gradle` file:
+```
+maven {
+    url  "http://dl.bintray.com/litifer17/LitiferSDK"
+}
+```
+
+Add the following line to the `dependencies` section of your module's `build.gradle` file:
 
 ```
-compile 'litifer.com.sdk:1.2'
+compile 'com.litifer.sdk:location-analytics:1.2'
 ```
 
 ### Add `uses-feature` tag to app manifest:
