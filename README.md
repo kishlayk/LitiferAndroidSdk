@@ -47,7 +47,7 @@ Create an instance variable of Litifer here :
 private Litifer litifer;
 ```
 
-Add the following snippet to your Application's onCreate or Main Activity's onCreate method:
+Add the following snippet to your Application's onCreate or Main Activity's onCreate method. Kindly replace *YOUR_APPLICATION_ID* and *YOUR_APPLICATION_SECRET* with yours:
 
 ```
 litifer = Litifer.init(this);
@@ -69,8 +69,8 @@ new Thread(){
                             .setGender("male");
 
                     litifer.config()
-                            .setApplicationID("592ff8126acd4a048a5deaa4")
-                            .setApplicationSecret("946ef7fe-fc99-43a2-87ce-1d526cbc2978")
+                            .setApplicationID("YOUR_APPLICATION_ID")
+                            .setApplicationSecret("YOUR_APPLICATION_SECRET")
                             .enableBackGroundMonitoring();
 
 
