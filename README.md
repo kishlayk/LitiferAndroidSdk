@@ -20,7 +20,7 @@ maven {
 Add the following line to the `dependencies` section of your module's `build.gradle` file:
 
 ```
-compile 'com.litifer.sdk:location-analytics:1.2'
+compile 'com.litifer.sdk:location-analytics:1.2.3'
 ```
 
 ### Add `uses-feature` tag to app manifest:
