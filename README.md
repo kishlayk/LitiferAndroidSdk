@@ -4,7 +4,7 @@
 
 * Min Android SDK 14
 
-1. ### Installing the Library
+### Installing the Library
 
 #### JCenter
 
@@ -14,14 +14,22 @@ The easiest way to get Litifer into your Android project is to use the JCenter M
 compile 'litifer.com.sdk:1.2'
 ```
 
-2. #### Add `uses-feature` tag to app manifest:
+### Add `uses-feature` tag to app manifest:
 
 ```
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 ```
+### In `dependencies` section of `app` level `build.gradle` add :
+```
+compile 'com.google.android.gms:play-services-location:10.0.1'
+```
 
-3. ### Intializing the SDK
+and in last line add :
+```
+apply plugin: 'com.google.gms.google-services'
+```
+### Intializing the SDK
 The Litifer SDK MUST be initialized inside the Application base class `onCreate` method or Main Activity `onCreate` method. If your Android application doesn't already have an Application base class, follow these instructions to create one.
 If your Android application doesn't already have an Application base class and want to create one, follow [these](https://developer.android.com/reference/android/app/Application.html) instructions to create one.
 
