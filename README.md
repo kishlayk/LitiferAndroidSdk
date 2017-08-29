@@ -154,7 +154,7 @@ Android 6 onwards requires runtime permission for Location.  Please add this fun
 ```
 
 
-finally close the litifer instance :
+finally close the litifer instance in `onDestroy` :
 
 ```
 litifer.close();
