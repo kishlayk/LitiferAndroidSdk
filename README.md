@@ -39,7 +39,7 @@ and in last line add :
 apply plugin: 'com.google.gms.google-services'
 ```
 ### Intializing the SDK
-The Litifer SDK MUST be initialized inside the Application base class `onCreate` method or Main Activity `onCreate` method. If your Android application doesn't already have an Application base class, follow these instructions to create one.
+The Litifer SDK MUST be initialized inside the Main Activity `onCreate` method. If your Android application doesn't already have an Application base class, follow these instructions to create one.
 If your Android application doesn't already have an Application base class and want to create one, follow [these](https://developer.android.com/reference/android/app/Application.html) instructions to create one.
 
 Create an instance variable of Litifer here :
