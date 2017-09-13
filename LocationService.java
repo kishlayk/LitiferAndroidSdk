@@ -281,3 +281,4 @@ public class LocationService extends Service implements ResultCallback, GoogleAp
         Log.d(TAG,"on start location");
         return START_STICKY;
     }
+}
